@@ -1,14 +1,14 @@
 name: Simple Greeting API
 
 on:
-  [cite_start]repository_dispatch: # 외부 API 요청을 수신하는 트리거입니다 [cite: 32, 61, 344]
+  repository_dispatch:
     types: [say_hello]
 
 jobs:
   greeting-job:
-    [cite_start]runs-on: ubuntu-latest # GitHub의 무료 서버를 빌려 씁니다 [cite: 46, 65]
+    runs-on: ubuntu-latest
     steps:
       - name: Print Message
         run: |
           echo "성공적으로 API 요청을 받았습니다!"
-          echo "전달된 메시지: ${{ github.event.client_payload.message }}"
+          echo "메시지: ${{ github.event.client_payload.message }}"
